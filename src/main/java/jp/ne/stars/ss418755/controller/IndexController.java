@@ -8,15 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 import jp.ne.stars.ss418755.form.LoginForm;
 
+/**
+ * ログイン/ログアウト処理
+ */
 @Controller
 public class IndexController {
 	@Autowired
 	HttpSession session;
 
+	/**
+	 * ログイン画面表示処理
+	 * 
+	 * @param loginForm ログインフォームクラス
+	 * @return ログイン画面
+	 */
 	@RequestMapping("/")
 	public String index(@ModelAttribute LoginForm loginForm) {
-		//		session.invalidate();
 		return "index";
+	}
+
+	public String login() {
+		return "list/list";
 	}
 
 	/**

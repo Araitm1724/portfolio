@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout::layout(~{::title},~{::body/content()})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+</head>
+
+<body>
+	<article>
+		<form th:action="@{/login}" th:object="${loginForm}">
+			<table>
+				<tr>
+					<th>ログインID</th>
+					<td>
+						<input type="text" th:field="*{id}">
+					</td>
+				</tr>
+
+				<tr>
+					<th>パスワード</th>
+					<td>
+						<input type="password" th:field="*{password}">
+					</td>
+				</tr>
+			</table>
+
+			<button type="submit">ログイン</button>
+		</form>
+	</article>
+</body>
+
+</html>

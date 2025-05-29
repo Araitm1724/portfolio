@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:fragment="layout(title,article)">
+
+<head>
+	<meta charset="UTF-8">
+
+	<!--スタイルシート-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+	<!--googleフォント-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap" rel="stylesheet">
+
+	<title th:replace="${title}"></title>
+</head>
+
+<body>
+	<header th:replace="~{common/header::layout-header}"></header>
+
+	<main>
+		<article th:replace="${article}"></article>
+		<th:block th:unless="${session.user}==null">
+			<aside th:replace="~{common/aside::layout-aside}"></aside>
+		</th:block>
+	</main>
+
+	<footer th:replace="~{common/footer::layout-footer}"></footer>
+</body>
+
+</html>

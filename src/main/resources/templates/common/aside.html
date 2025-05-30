@@ -7,7 +7,19 @@
 </head>
 
 <body>
-	<aside th:fragment="layout-aside"></aside>
+	<aside th:fragment="layout-aside">
+		<h1>ようこそ
+			<span th:text="${session.user.userName}"></span>
+			さん
+		</h1>
+		<p><a th:href="@{/logout}">ログアウト</a></p>
+
+		<h2>作品検索</h2>
+		<form th:action="@{/list/search}">
+			<input type="text" name="workName">
+			<button type="submit">検索</button>
+		</form>
+	</aside>
 </body>
 
 </html>

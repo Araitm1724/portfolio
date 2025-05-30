@@ -1,11 +1,13 @@
 package jp.ne.stars.ss418755.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import jp.ne.stars.ss418755.form.LoginForm;
 
 /**
@@ -13,9 +15,6 @@ import jp.ne.stars.ss418755.form.LoginForm;
  */
 @Controller
 public class IndexController {
-	@Autowired
-	HttpSession session;
-
 	/**
 	 * ログイン画面表示処理
 	 * 
@@ -27,8 +26,17 @@ public class IndexController {
 		return "index";
 	}
 
-	public String login() {
-		return "list/list";
+	@PostMapping("/login")
+	public String login(
+			@Valid @ModelAttribute LoginForm loginForm,
+			BindingResult result, HttpSession session) {
+		if (result.hasErrors()) {
+			return "index";
+		} else {
+			
+		}
+
+		return "list/work/works";
 	}
 
 	/**
@@ -38,7 +46,7 @@ public class IndexController {
 	 * @return ログイン画面にリダイレクト
 	 */
 	@RequestMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}

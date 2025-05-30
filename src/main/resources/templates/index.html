@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout::layout(~{::title},~{::body/content()})}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{common/layout::layout(~{::title},~{::body/content()})}">
 
 <head>
 	<meta charset="UTF-8">
@@ -13,7 +13,7 @@
 				<tr>
 					<th>ログインID</th>
 					<td>
-						<input type="text" th:field="*{id}">
+						<input type="text" th:field="*{userId}">
 					</td>
 				</tr>
 
@@ -28,7 +28,7 @@
 			<button type="submit">ログイン</button>
 		</form>
 
-		<a th:href="@{/regist/account}">
+		<a th:href="@{/regist/account/input}">
 			アカウントがまだ無い方はこちらから
 		</a>
 	</article>
